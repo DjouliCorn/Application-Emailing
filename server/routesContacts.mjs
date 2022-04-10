@@ -12,7 +12,8 @@ routerContact.get('/contacts', (req, res) => {
             }
             //res.render("contacts", { model: result.rows })
             req.body = result.rows
-            res.send(req.body)
+            //res.send(req.body)
+            res.render("index", { model: result.rows })
         })
     } catch (err) {
         console.error('Error in routerContacts with get method', err.message)

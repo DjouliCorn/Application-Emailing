@@ -3,13 +3,19 @@ import morgan from 'morgan'
 import routerContact from './routesContacts.mjs'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
+import path from 'path'
 
 dotenv.config()
 
 var app = express()
 const port = process.env.PORT || 3000
 const host = '127.0.0.1'
+const __dirname = path.resolve();
 
+app.set("view engine", "ejs")
+app.set("views", path.join(__dirname, "../views"))
+app.use(express.static('../public'))
+app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(routerContact)
 app.use(morgan('tiny'))
