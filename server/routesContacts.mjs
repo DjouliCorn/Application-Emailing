@@ -4,7 +4,7 @@ import pool from './services/config.mjs'
 const routerContact = express.Router()
 const sql = "SELECT * FROM contact"
 
-routerContact.get('/', (req, res) => {
+routerContact.get('/contacts', (req, res) => {
     try {
         pool.query(sql, [], (err, result) => {
             if (err) {
