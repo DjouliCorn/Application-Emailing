@@ -4,6 +4,10 @@ import pool from './services/config.mjs'
 const routerContact = express.Router()
 const sql = "SELECT * FROM contact"
 
+routerContact.get('/', (req, res) => {
+    res.render("index")
+})
+
 routerContact.get('/contacts', (req, res) => {
     try {
         pool.query(sql, [], (err, result) => {
@@ -13,7 +17,7 @@ routerContact.get('/contacts', (req, res) => {
             //res.render("contacts", { model: result.rows })
             req.body = result.rows
             //res.send(req.body)
-            res.render("index", { model: result.rows })
+            res.render("contacts", { model: result.rows })
         })
     } catch (err) {
         console.error('Error in routerContacts with get method', err.message)
