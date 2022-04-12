@@ -1,6 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import routerContact from './routesContacts.mjs'
+import routerLogin from './routesLogin.mjs'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import path from 'path'
@@ -18,6 +19,7 @@ app.use(express.static('../public'))
 app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(routerContact)
+app.use(routerLogin)
 app.use(morgan('tiny'))
 
 app.listen(port, host)

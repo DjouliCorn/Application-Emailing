@@ -2,25 +2,19 @@ import express from 'express'
 import pool from './services/config.mjs'
 
 const routerContact = express.Router()
-const sql = "SELECT * FROM contact"
-
-routerContact.get('/', (req, res) => {
-    res.render("index")
-})
+const sqlContact = "SELECT * FROM contact"
 
 routerContact.get('/contacts', (req, res) => {
     try {
-        pool.query(sql, [], (err, result) => {
+        pool.query(sqlContact, [], (err, result) => {
             if (err) {
                 return console.error(err.message)
             }
-            //res.render("contacts", { model: result.rows })
             req.body = result.rows
-            //res.send(req.body)
             res.render("contacts", { model: result.rows })
         })
     } catch (err) {
-        console.error('Error in routerContacts with get method', err.message)
+        console.error('Error in routerContacts with get method : /contacts', err.message)
     }
 })
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+</head>
+
+<body>
+
+    <center>
+        <div class="container">
+            <img height="100px" src="logo.png"></img>
+        </div>
+
+        <form action="/auth" method="POST">
+
+            <div class="form-group">
+
+                <label for="firstName">First Name</label>
+
+                <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Enter first name" name="email">
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="lastName">Last Name</label>
+
+                <input type="text" class="form-control" id="password" aria-describedby="emailHelp"
+                    placeholder="Enter last name" name="password">
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+    </center>
+</body>
+
+</html>
