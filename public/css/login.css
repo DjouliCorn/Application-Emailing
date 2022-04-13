@@ -1,6 +1,6 @@
 .logo-container {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .form-background {
@@ -17,7 +17,6 @@
 }
 
 .btn-primary {
-    margin-top: 50px;
     background-color: #255957;
     border-color: rgb(0, 0, 0, 0.0);
     padding-left: 8%;
@@ -26,4 +25,8 @@
     text-transform: uppercase;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.button-and-error {
+    margin-top: 30px;
 }

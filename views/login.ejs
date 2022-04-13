@@ -14,7 +14,7 @@
 
     <center>
         <div class="logo-container">
-            <img height="150px" src="logo.png"></img>
+            <img height="130px" src="logo.png"></img>
         </div>
 
         <div class="form-container">
@@ -43,7 +43,15 @@
 
             </div>
 
-            <button type="submit" class="btn btn-primary">Connexion</button>
+            <div class="button-and-error">
+                <% if (typeof errorMessage !=="" ) { %>
+                    <p>
+                        <%= errorMessage %>
+                    </p>
+                    <% } %>
+
+                        <button type="submit" class="btn btn-primary">Connexion</button>
+            </div>
 
             </form>
 
