@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/login.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Login</title>
@@ -12,33 +13,41 @@
 <body>
 
     <center>
-        <div class="container">
-            <img height="100px" src="logo.png"></img>
+        <div class="logo-container">
+            <img height="150px" src="logo.png"></img>
         </div>
 
-        <form action="/auth" method="POST">
+        <div class="form-container">
 
-            <div class="form-group">
+            <div class="form-background">
 
-                <label for="firstName">Pseudo</label>
+                <form action="/auth" method="POST">
 
-                <input type="text" class="form-control" id="email" aria-describedby="emailHelp"
-                    placeholder="Enter first name" name="email">
+                    <div class="form-group">
+
+                        <label for="firstName">Pseudo</label>
+
+                        <input type="text" class="form-control" id="pseudo" aria-describedby="pseudoHelp"
+                            placeholder="Entrer le pseudo" name="pseudo">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="lastName">Mot de passe</label>
+
+                        <input type="text" class="form-control" id="password" aria-describedby="emailHelp"
+                            placeholder="Entrer le mot de passe" name="password">
+
+                    </div>
 
             </div>
 
-            <div class="form-group">
+            <button type="submit" class="btn btn-primary">Connexion</button>
 
-                <label for="lastName">Mot de passe</label>
+            </form>
 
-                <input type="text" class="form-control" id="password" aria-describedby="emailHelp"
-                    placeholder="Enter last name" name="password">
-
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-
-        </form>
+        </div>
 
     </center>
 </body>

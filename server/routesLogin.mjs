@@ -9,11 +9,8 @@ routerLogin.get('/', (req, res) => {
 })
 
 routerLogin.post('/auth', (req, res) => {
-    let username = req.body.email
+    let username = req.body.pseudo
     let password = req.body.password
-
-    console.log(username)
-    console.log(password)
 
     if (username && password) {
         pool.query(sqlUser, [username, password], function (err, results) {
