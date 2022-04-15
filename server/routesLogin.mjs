@@ -4,6 +4,7 @@ import pool from './services/config.mjs'
 const routerLogin = express.Router()
 const sqlUser = 'SELECT * FROM users WHERE pseudo = $1 AND password = $2'
 var errorIncorrectInfo = ""
+var username = ""
 
 routerLogin.get('/', (_, res) => {
     res.render('login', {
@@ -21,6 +22,9 @@ routerLogin.post('/auth', (req, res) => {
         pool.query(sqlUser, [username, password], function (err, results) {
             if (err) { throw err }
             if (results.rows.length > 0) {
+                var jsonToString = JSON.stringify(results.rows[0])
+                var userInfo = JSON.parse(jsonToString)
+                username = userInfo['pseudo']
                 res.redirect('/home')
             } else {
                 res.render('login', {
@@ -39,7 +43,7 @@ routerLogin.post('/auth', (req, res) => {
 })
 
 routerLogin.get('/home', (req, res) => {
-    res.render('home')
+    res.render('home', { getName: username })
 })
 
 export default routerLogin
