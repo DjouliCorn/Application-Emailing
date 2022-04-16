@@ -46,5 +46,10 @@ routerLogin.get('/home', (req, res) => {
     res.render('home', { getName: pseudo })
 })
 
+routerLogin.get('/logout', function (req, res) {
+    delete req.user
+    res.redirect('/')
+})
+
 export default routerLogin
 
