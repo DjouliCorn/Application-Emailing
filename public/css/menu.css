@@ -1,0 +1,25 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    order: 10;
+}
+
+.general {
+    color: white;
+    background-color: #346B74;
+    width: 100px;
+    height: 100px;
+}
+
+.general:hover {
+    background-color: #8AA295;
+}
+
+.image {
+    margin-top: 15px;
+}
+
+.image-bis {
+    margin-top: 15px;
+    margin-left: 10px;
+}
