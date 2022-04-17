@@ -1,15 +1,16 @@
-<%- include("_header") -%>
-<%- include("menu") -%>
+<!DOCTYPE html>
+<html lang="en">
 
-    <h1>Liste des contacts</h1>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Contact</title>
+</head>
 
-    <ul>
-        <% for (const contact of model) { %>
-            <li>
-                <%= contact.name %>
-            </li>
+<body>
+    <%-include("header")-%>
+</body>
 
-            <%}%>
-    </ul>
-
-    <%- include("_footer") -%>
+</html>
