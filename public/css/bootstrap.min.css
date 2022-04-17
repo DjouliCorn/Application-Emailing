@@ -79,6 +79,12 @@ body {
     background-color: #fff
 }
 
+.bodyContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
 [tabindex="-1"]:focus {
     outline: 0 !important
 }
@@ -9870,9 +9876,9 @@ a.text-dark:hover {
         text-decoration: underline
     }
 
-    abbr[title]::after {
+    /*abbr[title]::after {
         content: " ("attr(title) ")"
-    }
+    }*/
 
     pre {
         white-space: pre-wrap !important
