@@ -1,0 +1,52 @@
+ul {
+    display: inline;
+    list-style-type: none;
+    margin-top: 20%;
+
+}
+
+li {
+    float: left;
+    margin-right: 5%;
+}
+
+.bodyContact {
+    width: 100%;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+#tableContact {
+    width: 80%;
+    margin-top: 5%;
+}
+
+th {
+    text-align: center;
+    width: 5%;
+    background-color: #EEEBD3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+td {
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.listContact {
+    border: 1pt solid #255957;
+}
+
+#firstTh {
+    border-radius: 15px 0px 0px 0px;
+}
+
+#lastTh {
+    border-radius: 0px 15px 0px 0px;
+}
+
+.icon {
+    width: 15%;
+}

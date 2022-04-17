@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/contact.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Contact</title>
@@ -15,6 +16,37 @@
     <%-include("header")-%>
         <div class="bodyContainer">
             <%- include("menu") -%>
+                <div class="bodyContact">
+                    <ul>
+                        <li>Tous les contacts</li>
+                        <li>Contacts par liste</li>
+                        <li>Ajouter un contact</li>
+                    </ul>
+                    <table id="tableContact">
+                        <thead>
+                            <tr>
+                                <th id="firstTh" scope="col">Surnom</th>
+                                <th scope="col">Prénom</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Mail</th>
+                                <th scope="col">Date de création</th>
+                                <th scope="col"></th>
+                                <th id="lastTh" scope="col"></th>
+                            </tr>
+                            <tr class="listContact">
+                                <td>Micka</td>
+                                <td>Mickeal</td>
+                                <td>Forban</td>
+                                <td>mail@jsisi.fr</td>
+                                <td>2022-07-24</td>
+                                <td><img class="icon" src="pen-solid 1ic-modify.png" /></td>
+                                <td><img class="icon" src="trash-solid 1ic-delete.png" /></td>
+                            </tr>
+                        </thead>
+
+                    </table>
+
+                </div>
         </div>
 </body>
 
