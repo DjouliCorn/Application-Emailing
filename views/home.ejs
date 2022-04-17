@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/home.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Accueil</title>
@@ -15,11 +16,21 @@
     <%-include("header")-%>
         <div class="bodyContainer">
             <%- include("menu") -%>
-                <div>
-                    <!-- Corps de site ici -->
+            <form action="/message">
+                <div class="writeMail">
+                    <center>
+                        <p class="titre">Destinataire</p>
+                        <input type="text" class="input" id="destinataire">
+                        <p class="titre">Objet</p>
+                        <input type="text" class="input" id="objet">
+                        <p class="titre">Message</p>
+                        <input type="text" class="inputMess" id="message">
+                    </center>
+                    <button class="brouillon" name="draft_button">Ajouter au brouillon</button>
+                    <button class="envoi" name="send_button">Envoyer</button>
                 </div>
+            </form>
         </div>
-
 
 </body>
 
