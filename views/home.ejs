@@ -14,23 +14,24 @@
 
 <body>
     <%-include("header")-%>
-        <div class="bodyContainer">
-            <%- include("menu") -%>
-            <form action="/message">
-                <div class="writeMail">
-                    <center>
-                        <p class="titre">Destinataire</p>
-                        <input type="text" class="input" id="destinataire">
-                        <p class="titre">Objet</p>
-                        <input type="text" class="input" id="objet">
-                        <p class="titre">Message</p>
-                        <input type="text" class="inputMess" id="message">
-                    </center>
-                    <button class="brouillon" name="draft_button">Ajouter au brouillon</button>
-                    <button class="envoi" name="send_button">Envoyer</button>
-                </div>
-            </form>
-        </div>
+        <form method="POST">
+            <div class="bodyContainer">
+                <%- include("menu") -%>
+                    <div class="writeMail">
+                        <center>
+                            <p class="titre">Destinataire</p>
+                            <input type="text" class="input" id="destinataire" name="destinataire">
+                            <p class="titre">Objet</p>
+                            <input type="text" class="input" id="objet" name="objet">
+                            <p class="titre">Message</p>
+                            <input type="text" class="inputMess" id="message" name="message">
+                        </center>
+                        <input type="submit" class="brouillon" name="draft_button" formaction="/draft" value="Ajouter au brouillon"/>
+                        <input type="submit" class="envoi" name="send_button" formaction="/send" value="Envoyer"/>
+                    </div>    
+            </div>
+        </form>
+
 
 </body>
 
