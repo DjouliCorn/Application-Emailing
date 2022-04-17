@@ -20,9 +20,7 @@ routerMessage.post('/draft', (req, res) => {
         })
         pool.end
     } else {
-        res.render('home', {
-            errorMessage: "Aucun champ rempli"
-        })
+        res.render('home', { getName: "bastien" })
         res.end
     }
 })
