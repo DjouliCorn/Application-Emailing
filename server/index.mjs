@@ -5,6 +5,7 @@ import routerLogin from './routesLogin.mjs'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import path from 'path'
+import session from 'express-session'
 
 dotenv.config()
 

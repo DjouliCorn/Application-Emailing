@@ -1,0 +1,27 @@
+.headerWebsite {
+    display: flex;
+    height: 60px;
+    background-color: white;
+    box-shadow: 1px 5px 5px rgb(0, 0, 0, 0.3);
+    justify-content: space-between;
+}
+
+.logoContainer {
+    display: flex;
+    margin-left: 40px;
+}
+
+.userHeader {
+    display: flex;
+    align-self: center;
+    margin-right: 40px;
+}
+
+.menuBar {
+    margin-left: 40px;
+}
+
+.userName {
+    margin-left: 5px;
+    color: #255957;
+}
