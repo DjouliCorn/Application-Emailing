@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/state.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ajouter un libellé</title>
+</head>
+
+<body>
+    <%-include("header")-%>
+        <form method="POST">
+            <div class="bodyContainer">
+                <%- include("menu") -%>
+                    <div class="writeLibelle" style="height: 250px;">
+                        <center>
+                            <% for (const libel of model) { %>
+                                <p class="titre">Id : </p>
+                                <input type="text" readonly="true" class="input" id="id" name="id"
+                                    value="<%= libel.id %>" />
+                                <p class="titre">Label</p>
+                                <input type="text" class="input" id="label" name="label" value="<%= libel.label %>">
+                                <%}%>
+                        </center>
+                        <input type="submit" class="sendlibel" formaction="/queryModify" value="Modifier le libellé" />
+                    </div>
+            </div>
+        </form>
+
+
+</body>
+
+</html>

@@ -5,6 +5,8 @@ const routerLibelles = express.Router()
 const sqlState = 'SELECT * from state'
 const sqlLabel = 'INSERT INTO state (label) VALUES ($1)'
 const sqlLibelleDelete = "DELETE FROM state WHERE id=$1"
+const sqlLibelleSelectionned = "SELECT * FROM state WHERE id=$1"
+const sqlLibelleUpdate = 'UPDATE state SET label = $2 WHERE id=$1'
 var errorIncorrectInfo = ""
 
 
@@ -62,6 +64,51 @@ routerLibelles.post('/deleteLibelle', (req, res) => {
         res.render('state', { getName: "bastien" })
         res.end
     }
+})
+
+routerLibelles.post('/modifyLibelle', (req, res) => {
+
+    const obj = Object.assign({}, req.body)
+
+    errorIncorrectInfo = ""
+    let id = obj.id
+
+    if (id) {
+        pool.query(sqlLibelleSelectionned, [id], async function (err, results) {
+            if (err) { throw err }
+            req.body = results.rows
+            res.render("modifyLib", { model: results.rows, getName: "bastien" })
+            res.end
+        })
+        pool.end
+    } else {
+        res.render('state', { getName: "bastien" })
+        res.end
+    }
+})
+
+routerLibelles.post('/queryModify', (req, res) => {
+    const obj = Object.assign({}, req.body)
+
+    errorIncorrectInfo = ""
+    let id = obj.id
+    let label = obj.label
+
+    if (id && label) {
+        pool.query(sqlLibelleUpdate, [id, label], async function (err, results) {
+            if (err) { throw err }
+            res.redirect('/modified')
+            res.end
+        })
+        pool.end
+    } else {
+        res.render('home', { getName: "bastien" })
+        res.end
+    }
+})
+
+routerLibelles.get('/modified', (_, res) => {
+    res.render('modified', { getName: "bastien" })
 })
 
 export default routerLibelles
