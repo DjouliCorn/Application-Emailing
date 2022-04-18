@@ -18,14 +18,23 @@
             <%- include("menu") -%>
                 <div class="bodyContact">
                     <ul>
-                        <li>Tous les contacts</li>
+                        <li class="selected">Tous les contacts</li>
                         <li>Contacts par liste</li>
                         <li>Ajouter un contact</li>
                     </ul>
+                    <div class="modification">
+                        <form action="POST">
+                            Rentrer l'id :
+                            <input type="text" name="idContact" />
+                            <input type="submit" formaction="" value="Modifier" />
+                            <input type="submit" formaction="" value="Supprimer" />
+                        </form>
+                    </div>
                     <table id="tableContact">
                         <thead>
                             <tr>
-                                <th id="firstTh" scope="col">Surnom</th>
+                                <th id="firstTh" scope="col">Id</th>
+                                <th scope="col">Surnom</th>
                                 <th scope="col">Prénom</th>
                                 <th scope="col">Nom</th>
                                 <th scope="col">Mail</th>
@@ -33,15 +42,6 @@
                                 <th scope="col"></th>
                                 <th id="lastTh" scope="col"></th>
                             </tr>
-                            <!--<tr class="listContact">
-                                <td>Micka</td>
-                                <td>Mickeal</td>
-                                <td>Forban</td>
-                                <td>mail@jsisi.fr</td>
-                                <td>2022-07-24</td>
-                                <td><img class="icon" src="pen-solid 1ic-modify.png" /></td>
-                                <td><img class="icon" src="trash-solid 1ic-delete.png" /></td>
-                            </tr>-->
                         <tbody></tbody>
                         </thead>
                     </table>
@@ -60,8 +60,10 @@
 
             data.forEach(element => {
                 const rowElt = document.createElement("tr")
+                rowElt.classList = "listContact"
                 console.log(element)
                 const arrayOfElt = []
+                arrayOfElt.push(element['id'])
                 arrayOfElt.push(element['name'])
                 arrayOfElt.push(element['firstname'])
                 arrayOfElt.push(element['lastname'])
@@ -74,21 +76,8 @@
                     rowElt.appendChild(cellElt)
                     console.log(elt)
                 }
-                const cellLogoModify = document.createElement("td")
-                const cellLogoDelete = document.createElement("td")
-                /*var modifyLogo = document.createElement("img")
-                modifyLogo.src = "pen-solid 1ic-modify.png"
-                modifyLogo.classList = "icon"*/
-                cellLogoModify.innerHTML = '<img class="icon" src="pen-solid 1ic-modify.png" />'
-                rowElt.appendChild(cellLogoModify)
-
-                cellLogoDelete.innerHTML = '<img class="icon" src="trash-solid 1ic-delete.png" />'
-                rowElt.appendChild(cellLogoDelete)
-
                 tableBody.appendChild(rowElt)
             })
-
-            //console.log(count)
         </script>
 </body>
 

@@ -15,8 +15,12 @@ li {
 }
 
 #tableContact {
-    width: 80%;
+    width: 70%;
     margin-top: 4%;
+}
+
+.modification {
+    margin-top: 3%;
 }
 
 th {
@@ -47,4 +51,9 @@ td {
 
 .icon {
     width: 15%;
+}
+
+.selected {
+    color: #A98743;
+    text-decoration: underline;
 }
