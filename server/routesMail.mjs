@@ -87,7 +87,7 @@ routerMail.post('/deleteMail', (req, res) => {
         })
         pool.end
     } else {
-        res.render('', { getName: "bastien" })
+        res.redirect("http://127.0.0.1:3000/mailDraft")
         res.end
     }
 })
