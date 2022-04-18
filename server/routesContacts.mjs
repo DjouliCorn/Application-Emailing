@@ -6,6 +6,7 @@ const routerContact = express.Router()
 const sqlContact = "SELECT * FROM contact"
 const sqlModifyContact = "SELECT * FROM contact WHERE id=$1"
 const sqlGetList = "SELECT * FROM list"
+const sqlSelectIdList = "SELECT * FROM list WHERE name=$1"
 const sqlUpdateContact = "UPDATE contact SET name=$1, firstname=$2, lastname=$3, mail=$4 WHERE id=$5"
 const sqlDeleteContact = "DELETE FROM contact WHERE id=$1 "
 const sqlAddContact = "INSERT INTO contact (name, firstname, lastname, mail, idlist) VALUES ($1, $2, $3, $4, $5)"
@@ -81,9 +82,15 @@ routerContact.post('/deleteContact', (req, res) => {
 routerContact.get('/addNewContact', (req, res) => {
     try {
         var infoUser = retrieveUsername()
-        res.render('addNewContact', { getName: infoUser })
+        pool.query(sqlGetList, (err, result) => {
+            if (err) {
+                return console.error(err.message)
+            }
+            let jsonData = JSON.stringify(result.rows)
+            res.render('addNewContact', { getName: infoUser, model: jsonData })
+        })
     } catch (err) {
-        console.error('Error in routerContacts with get method : /contacts/modify', err.message)
+        console.error('Error in routerContacts with get method : /addNewContact', err.message)
     }
 })
 
@@ -93,16 +100,16 @@ routerContact.post('/sendNewContact', (req, res) => {
         const firstname = req.body.firstname
         const lastname = req.body.lastname
         const mail = req.body.mail
-        const idList = req.body.idList
+        const list = req.body.list
 
-        pool.query(sqlAddContact, [name, firstname, lastname, mail, idList], (err, result) => {
+        pool.query(sqlAddContact, [name, firstname, lastname, mail, list], (err, _) => {
             if (err) {
                 return console.error(err.message)
             }
             res.redirect("http://localhost:3000/contacts")
         })
     } catch (err) {
-        console.error('Error in routerContacts with get method : /contacts/modify', err.message)
+        console.error('Error in routerContacts with get method : /sendNewContact', err.message)
     }
 })
 

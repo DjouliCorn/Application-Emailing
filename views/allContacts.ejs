@@ -49,10 +49,6 @@
         <script>
             var result = '<%-resultModule %>'
             var data = JSON.parse(result)
-            var count = 0
-            data.forEach(element => {
-                count++;
-            });
             const table = document.querySelector("table")
             const tableBody = table.querySelector("tbody")
             tableBody.innerHTML = ""
@@ -60,7 +56,6 @@
             data.forEach(element => {
                 const rowElt = document.createElement("tr")
                 rowElt.classList = "listContact"
-                console.log(element)
                 const arrayOfElt = []
                 arrayOfElt.push(element['id'])
                 arrayOfElt.push(element['name'])

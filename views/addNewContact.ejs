@@ -35,13 +35,27 @@
                             <input type="text" id="lastname" name="lastname" />
                             <label>Mail</label>
                             <input type="text" id="mail" name="mail" />
-                            <label>Id de la liste</label>
-                            <input type="text" id="idList" name="idList" />
+                            <label>Choisissez une liste</label>
+                            <select name="list" id="list"></select>
                             <button type="submit" class="btn btn-primary">Ajouter</button>
                         </form>
                     </div>
                 </div>
         </div>
+
+        <script>
+            const result = '<%-model %>'
+            const data = JSON.parse(result)
+            const selectList = document.getElementById("list")
+
+            data.forEach(element => {
+                var optionList = document.createElement("option")
+                optionList.value = element['id']
+                optionList.text = element['name']
+                console.log(element['name'])
+                selectList.appendChild(optionList)
+            });
+        </script>
 </body>
 
 </html>
