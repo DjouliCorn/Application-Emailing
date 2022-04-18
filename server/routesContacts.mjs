@@ -6,7 +6,6 @@ const routerContact = express.Router()
 const sqlContact = "SELECT * FROM contact"
 const sqlModifyContact = "SELECT * FROM contact WHERE id=$1"
 const sqlGetList = "SELECT * FROM list"
-const sqlSelectIdList = "SELECT * FROM list WHERE name=$1"
 const sqlUpdateContact = "UPDATE contact SET name=$1, firstname=$2, lastname=$3, mail=$4 WHERE id=$5"
 const sqlDeleteContact = "DELETE FROM contact WHERE id=$1 "
 const sqlAddContact = "INSERT INTO contact (name, firstname, lastname, mail, idlist) VALUES ($1, $2, $3, $4, $5)"
@@ -50,7 +49,7 @@ routerContact.post('/contactModifyDone', (req, res) => {
         const lastname = req.body.lastname
         const mail = req.body.mail
 
-        pool.query(sqlUpdateContact, [nickname, firstname, lastname, mail, id], (err, result) => {
+        pool.query(sqlUpdateContact, [nickname, firstname, lastname, mail, id], (err, _) => {
             if (err) {
                 return console.error(err.message)
             }
@@ -79,7 +78,7 @@ routerContact.post('/deleteContact', (req, res) => {
     }
 })
 
-routerContact.get('/addNewContact', (req, res) => {
+routerContact.get('/addNewContact', (_, res) => {
     try {
         var infoUser = retrieveUsername()
         pool.query(sqlGetList, (err, result) => {
