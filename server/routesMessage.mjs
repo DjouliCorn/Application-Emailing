@@ -33,8 +33,6 @@ routerMessage.post('/send', (req, res) => {
     let object = obj.objet
     let content = obj.message
 
-    console.log(obj)
-
     if (idList && object && content) {
         pool.query(sqlMessage, [idList, object, content], async function (err, results) {
             if (err) { throw err }
