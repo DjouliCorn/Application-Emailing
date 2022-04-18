@@ -18,12 +18,14 @@
             <%- include("menu") -%>
                 <div class="bodyContact">
                     <ul>
-                        <li>Tous les contacts</li>
+                        <a href="http://localhost:3000/contacts">
+                            <li>Tous les contacts</li>
+                        </a>
                         <li>Contacts par liste</li>
                         <li class="selected">Ajouter un contact</li>
                     </ul>
                     <div>
-                        <form method="POST">
+                        <form action="/sendNewContact" method="POST">
                             Ajouter un nouveau contact
                             <label>Surnom</label>
                             <input type="text" id="name" name="name" />

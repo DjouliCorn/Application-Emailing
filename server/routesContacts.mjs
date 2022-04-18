@@ -5,11 +5,12 @@ import fs from 'fs'
 const routerContact = express.Router()
 const sqlContact = "SELECT * FROM contact"
 const sqlModifyContact = "SELECT * FROM contact WHERE id=$1"
+const sqlGetList = "SELECT * FROM list"
 const sqlUpdateContact = "UPDATE contact SET name=$1, firstname=$2, lastname=$3, mail=$4 WHERE id=$5"
 const sqlDeleteContact = "DELETE FROM contact WHERE id=$1 "
 const sqlAddContact = "INSERT INTO contact (name, firstname, lastname, mail, idlist) VALUES ($1, $2, $3, $4, $5)"
 
-routerContact.get('/contacts', (req, res) => {
+routerContact.get('/contacts', (_, res) => {
     try {
         var infoUser = retrieveUsername()
         pool.query(sqlContact, [], (err, result) => {
@@ -64,7 +65,7 @@ routerContact.post('/deleteContact', (req, res) => {
     try {
         const idContact = req.body.id
 
-        pool.query(sqlDeleteContact, [idContact], (err, result) => {
+        pool.query(sqlDeleteContact, [idContact], (err, _) => {
             if (err) {
                 return console.error(err.message)
             }
@@ -79,13 +80,31 @@ routerContact.post('/deleteContact', (req, res) => {
 
 routerContact.get('/addNewContact', (req, res) => {
     try {
-
+        var infoUser = retrieveUsername()
+        res.render('addNewContact', { getName: infoUser })
     } catch (err) {
         console.error('Error in routerContacts with get method : /contacts/modify', err.message)
     }
 })
 
+routerContact.post('/sendNewContact', (req, res) => {
+    try {
+        const name = req.body.name
+        const firstname = req.body.firstname
+        const lastname = req.body.lastname
+        const mail = req.body.mail
+        const idList = req.body.idList
 
+        pool.query(sqlAddContact, [name, firstname, lastname, mail, idList], (err, result) => {
+            if (err) {
+                return console.error(err.message)
+            }
+            res.redirect("http://localhost:3000/contacts")
+        })
+    } catch (err) {
+        console.error('Error in routerContacts with get method : /contacts/modify', err.message)
+    }
+})
 
 function retrieveUsername() {
     var data = fs.readFileSync('./configUser.json', 'utf8')
