@@ -28,13 +28,20 @@
                     <div class="Maillib">
                         <% for (const state of model) { %>
                             <p class="libelles">
-                            <%= state.id %>
-                            -
-                                <%= state.label %>
-                                </p>
-                                <br>
+                                <%= state.id %>
+                                    -
+                                    <%= state.label %>
+                            </p>
+                            <br>
 
-                                    <%}%>
+                            <%}%>
+                                <form method="POST">
+                                    <center>
+                                        <input type="text" class="input" id="id" name="id" placeholder="Id">
+                                        <input type="submit" class="returnhome" formaction="/deleteLibelle"
+                                            value="Supprimer le libellé" />
+                                    </center>
+                                </form>
                     </div>
             </div>
         </form>

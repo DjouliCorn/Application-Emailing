@@ -4,6 +4,7 @@ import pool from './services/config.mjs'
 const routerLibelles = express.Router()
 const sqlState = 'SELECT * from state'
 const sqlLabel = 'INSERT INTO state (label) VALUES ($1)'
+const sqlLibelleDelete = "DELETE FROM state WHERE id=$1"
 var errorIncorrectInfo = ""
 
 
@@ -31,8 +32,6 @@ routerLibelles.post('/queryLibelle', (req, res) => {
     errorIncorrectInfo = ""
     let label = obj.label
 
-    console.log(label)
-
     if (label) {
         pool.query(sqlLabel, [label], async function (err, result) {
             if (err) { throw err }
@@ -46,6 +45,24 @@ routerLibelles.post('/queryLibelle', (req, res) => {
     }
 })
 
+routerLibelles.post('/deleteLibelle', (req, res) => {
+    const obj = Object.assign({}, req.body)
+
+    errorIncorrectInfo = ""
+    let id = obj.id
+
+    if (id) {
+        pool.query(sqlLibelleDelete, [id], async function (err, results) {
+            if (err) { throw err }
+            res.redirect('/libelles')
+            res.end
+        })
+        pool.end
+    } else {
+        res.render('state', { getName: "bastien" })
+        res.end
+    }
+})
 
 export default routerLibelles
 
