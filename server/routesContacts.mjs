@@ -12,8 +12,8 @@ routerContact.get('/contacts', (req, res) => {
             if (err) {
                 return console.error(err.message)
             }
-            req.body = result.rows
-            res.render("contacts", { getName: infoUser })
+            let jsonData = JSON.stringify(result.rows)
+            res.render("contacts", { getName: infoUser, resultModule: jsonData })
         })
     } catch (err) {
         console.error('Error in routerContacts with get method : /contacts', err.message)

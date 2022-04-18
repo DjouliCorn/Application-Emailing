@@ -43,11 +43,18 @@
                                 <td><img class="icon" src="trash-solid 1ic-delete.png" /></td>
                             </tr>
                         </thead>
-
                     </table>
-
                 </div>
         </div>
+        <script>
+            var result = '<%-resultModule %>';
+            var data = JSON.parse(result);
+            var count = 0
+            data.forEach(element => {
+                count++;
+            });
+            console.log(count)
+        </script>
 </body>
 
 </html>

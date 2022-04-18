@@ -1,8 +1,6 @@
 ul {
     display: inline;
     list-style-type: none;
-    margin-top: 20%;
-
 }
 
 li {
@@ -12,13 +10,13 @@ li {
 
 .bodyContact {
     width: 100%;
-    margin-top: 5%;
+    margin-top: 4%;
     margin-left: 5%;
 }
 
 #tableContact {
     width: 80%;
-    margin-top: 5%;
+    margin-top: 4%;
 }
 
 th {
