@@ -28,22 +28,27 @@
                 <div class="Mail">
                     <h1 class="titre">Liste de mes brouillons</h1>
 
-                    <ol>
+                    <ul>
                         <% for (const mail of model) { %>
                             <li>
-                                <p class="text">Objet :</p>
-                                <%= mail.object %>
-                                    <p class="text">Contenu :</p>
-                                    <%= mail.content %>
-                                        <br>
-                                        <a href="/homeDraft">
-                                            <input type="button" class="returnhome" value="Continuer mon mail" />
-                                        </a>
+                                <p class="text">Id :</p>
+                                <%= mail.id %>
+                                    <p class="text">Objet :</p>
+                                    <%= mail.object %>
+                                        <p class="text">Contenu :</p>
+                                        <%= mail.content %>
                             </li>
-
                             <%}%>
-                    </ol>
+                    </ul>
+                    <center>
+                    <form method="POST">
+                        <input type="text" class="input" id="id" name="id" placeholder="Id">
+                        <input type="submit" class="returnhome" formaction="/deleteMail" value="Suppression" />
+                        <input type="submit" class="returnhome" formaction="/homeDraft" value="Continuer mon mail" />
+                    </form>
+                    </center>
                 </div>
+
 
         </div>
 </body>

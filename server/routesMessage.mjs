@@ -3,6 +3,7 @@ import pool from './services/config.mjs'
 
 const routerMessage = express.Router()
 const sqlMessage = 'INSERT INTO message (object, content, idList, idState) VALUES ($2, $3, $1, 4)'
+const sqlMessageUpdate = 'UPDATE message SET object = $3, content = $4, idList = $2 , idState = 4 WHERE id=$1'
 const sqlDraft = 'INSERT INTO message (object, content, idList, idState) VALUES ($2, $3, $1, 1)'
 var errorIncorrectInfo = ""
 
@@ -33,8 +34,6 @@ routerMessage.post('/send', (req, res) => {
     let object = obj.objet
     let content = obj.message
 
-    console.log(obj)
-
     if (idList && object && content) {
         pool.query(sqlMessage, [idList, object, content], async function (err, results) {
             if (err) { throw err }
@@ -44,6 +43,28 @@ routerMessage.post('/send', (req, res) => {
         pool.end
     } else {
         res.render('home', {getName: "bastien"})
+        res.end
+    }
+})
+
+routerMessage.post('/sendDraft', (req, res) => {
+    const obj = Object.assign({}, req.body)
+
+    errorIncorrectInfo = ""
+    let id = obj.id
+    let idList = obj.destinataire
+    let object = obj.objet
+    let content = obj.message
+
+    if (id && idList && object && content) {
+        pool.query(sqlMessageUpdate, [id, idList, object, content], async function (err, results) {
+            if (err) { throw err }
+            res.redirect('/sended')
+            res.end
+        })
+        pool.end
+    } else {
+        res.render('home', { getName: "bastien" })
         res.end
     }
 })

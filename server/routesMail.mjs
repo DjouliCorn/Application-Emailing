@@ -5,9 +5,12 @@ const routerMail = express.Router()
 const sqlMail = "SELECT * FROM message"
 const sqlMailSend = "SELECT * FROM message WHERE idstate=4"
 const sqlMailDraft = "SELECT * FROM message WHERE idstate=1"
-const sqlMailSelectionned = "SELECT * FROM message WHERE id=1"
+const sqlMailSelectionned = "SELECT * FROM message WHERE id=$1"
+const sqlMailDelete = "DELETE FROM message WHERE id=$1"
+var errorIncorrectInfo = ""
 
 routerMail.get('/mail', (req, res) => {
+    const obj = Object.assign({}, req.body)
     try {
         pool.query(sqlMail, [], (err, result) => {
             if (err) {
@@ -49,20 +52,45 @@ routerMail.get('/mailDraft', (req, res) => {
     }
 })
 
-routerMail.get('/homeDraft', (req, res) => {
-    try {
-        pool.query(sqlMailSelectionned, [], (err, result) => {
-            if (err) {
-                return console.error(err.message)
-            }
-            req.body = result.rows
-            res.render("homeDraft", { model: result.rows, getName: "bastien" })
+routerMail.post('/homeDraft', (req, res) => {
+
+    const obj = Object.assign({}, req.body)
+
+    errorIncorrectInfo = ""
+    let id = obj.id
+
+    if (id) {
+        pool.query(sqlMailSelectionned, [id], async function (err, results) {
+            if (err) { throw err }
+            req.body = results.rows
+            res.render("homeDraft", { model: results.rows, getName: "bastien" })
+            res.end
         })
-    } catch (err) {
-        console.error('Error in routerMail with get method : /homeDraft', err.message)
+        pool.end
+    } else {
+        res.render('draft', { getName: "bastien" })
+        res.end
     }
 })
 
+routerMail.post('/deleteMail', (req, res) => {
+    const obj = Object.assign({}, req.body)
+
+    errorIncorrectInfo = ""
+    let id = obj.id
+
+    if (id) {
+        pool.query(sqlMailDelete, [id], async function (err, results) {
+            if (err) { throw err }
+            res.redirect('/mailDraft')
+            res.end
+        })
+        pool.end
+    } else {
+        res.render('', { getName: "bastien" })
+        res.end
+    }
+})
 
 export default routerMail
 
