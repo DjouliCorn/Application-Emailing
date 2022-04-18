@@ -33,7 +33,7 @@
                                 <th scope="col"></th>
                                 <th id="lastTh" scope="col"></th>
                             </tr>
-                            <tr class="listContact">
+                            <!--<tr class="listContact">
                                 <td>Micka</td>
                                 <td>Mickeal</td>
                                 <td>Forban</td>
@@ -41,19 +41,54 @@
                                 <td>2022-07-24</td>
                                 <td><img class="icon" src="pen-solid 1ic-modify.png" /></td>
                                 <td><img class="icon" src="trash-solid 1ic-delete.png" /></td>
-                            </tr>
+                            </tr>-->
+                        <tbody></tbody>
                         </thead>
                     </table>
                 </div>
         </div>
         <script>
-            var result = '<%-resultModule %>';
-            var data = JSON.parse(result);
+            var result = '<%-resultModule %>'
+            var data = JSON.parse(result)
             var count = 0
             data.forEach(element => {
                 count++;
             });
-            console.log(count)
+            const table = document.querySelector("table")
+            const tableBody = table.querySelector("tbody")
+            tableBody.innerHTML = ""
+
+            data.forEach(element => {
+                const rowElt = document.createElement("tr")
+                console.log(element)
+                const arrayOfElt = []
+                arrayOfElt.push(element['name'])
+                arrayOfElt.push(element['firstname'])
+                arrayOfElt.push(element['lastname'])
+                arrayOfElt.push(element['mail'])
+                arrayOfElt.push(element['creationdate'])
+
+                for (const elt of arrayOfElt) {
+                    const cellElt = document.createElement("td")
+                    cellElt.textContent = elt
+                    rowElt.appendChild(cellElt)
+                    console.log(elt)
+                }
+                const cellLogoModify = document.createElement("td")
+                const cellLogoDelete = document.createElement("td")
+                /*var modifyLogo = document.createElement("img")
+                modifyLogo.src = "pen-solid 1ic-modify.png"
+                modifyLogo.classList = "icon"*/
+                cellLogoModify.innerHTML = '<img class="icon" src="pen-solid 1ic-modify.png" />'
+                rowElt.appendChild(cellLogoModify)
+
+                cellLogoDelete.innerHTML = '<img class="icon" src="trash-solid 1ic-delete.png" />'
+                rowElt.appendChild(cellLogoDelete)
+
+                tableBody.appendChild(rowElt)
+            })
+
+            //console.log(count)
         </script>
 </body>
 
