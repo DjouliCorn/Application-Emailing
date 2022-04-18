@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/menu.css">
-    <link rel="stylesheet" href="/css/contact.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Contact</title>
@@ -17,6 +16,23 @@
         <div class="bodyContainer">
             <%- include("menu") -%>
                 <div class="bodyContact">
+                    <div>
+                        <form action="/contactModifyDone" method="post">
+                            <% for (const data of model) { %>
+                                <label>Id</label>
+                                <input type="text" readonly="true" id="id" name="id" value="<%= data.id %>" />
+                                <label>Surnom</label>
+                                <input type="text" id="name" name="name" value="<%= data.name %>" />
+                                <label>Prénom</label>
+                                <input type="text" id="firstname" name="firstname" value="<%= data.firstname %>">
+                                <label>Nom</label>
+                                <input type="text" id="lastname" name="lastname" value="<%= data.lastname %>">
+                                <label>Mail</label>
+                                <input type="text" id="mail" name="mail" value="<%= data.mail %>">
+                                <%}%>
+                                    <button type="submit" class="btn btn-primary">Modifier</button>
+                        </form>
+                    </div>
                 </div>
         </div>
 </body>

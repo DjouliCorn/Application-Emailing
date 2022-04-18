@@ -23,10 +23,10 @@
                         <li>Ajouter un contact</li>
                     </ul>
                     <div class="modification">
-                        <form action="POST">
+                        <form method="POST">
                             Rentrer l'id :
-                            <input type="text" name="idContact" />
-                            <input type="submit" formaction="" value="Modifier" />
+                            <input type="text" name="id" />
+                            <input type="submit" formaction="/contactModify" value="Modifier" />
                             <input type="submit" formaction="" value="Supprimer" />
                         </form>
                     </div>
@@ -37,10 +37,7 @@
                                 <th scope="col">Surnom</th>
                                 <th scope="col">Prénom</th>
                                 <th scope="col">Nom</th>
-                                <th scope="col">Mail</th>
-                                <th scope="col">Date de création</th>
-                                <th scope="col"></th>
-                                <th id="lastTh" scope="col"></th>
+                                <th id="lastTh" scope="col">Mail</th>
                             </tr>
                         <tbody></tbody>
                         </thead>
@@ -68,7 +65,6 @@
                 arrayOfElt.push(element['firstname'])
                 arrayOfElt.push(element['lastname'])
                 arrayOfElt.push(element['mail'])
-                arrayOfElt.push(element['creationdate'])
 
                 for (const elt of arrayOfElt) {
                     const cellElt = document.createElement("td")

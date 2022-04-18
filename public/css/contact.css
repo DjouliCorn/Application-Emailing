@@ -49,10 +49,6 @@ td {
     border-radius: 0px 15px 0px 0px;
 }
 
-.icon {
-    width: 15%;
-}
-
 .selected {
     color: #A98743;
     text-decoration: underline;

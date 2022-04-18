@@ -4,6 +4,8 @@ import fs from 'fs'
 
 const routerContact = express.Router()
 const sqlContact = "SELECT * FROM contact"
+const sqlModifyContact = "SELECT * FROM contact WHERE id=$1"
+const sqlUpdateContact = "UPDATE contact SET name=$1, firstname=$2, lastname=$3, mail=$4 WHERE id=$5"
 
 routerContact.get('/contacts', (req, res) => {
     try {
@@ -20,7 +22,42 @@ routerContact.get('/contacts', (req, res) => {
     }
 })
 
-routerContact.get('/contacts&idContact=')
+routerContact.post('/contactModify', (req, res) => {
+    try {
+        var idContact = req.body.id
+        var infoUser = retrieveUsername()
+
+        pool.query(sqlModifyContact, [idContact], (err, result) => {
+            if (err) {
+                return console.error(err.message)
+            }
+            res.render("modifyContact", { getName: infoUser, model: result.rows })
+        })
+    } catch (err) {
+        console.error('Error in routerContacts with get method : /contacts/modify', err.message)
+    }
+})
+
+routerContact.post('/contactModifyDone', (req, res) => {
+    try {
+        const id = req.body.id
+        const nickname = req.body.name
+        const firstname = req.body.firstname
+        const lastname = req.body.lastname
+        const mail = req.body.mail
+        var infoUser = retrieveUsername()
+
+        pool.query(sqlUpdateContact, [nickname, firstname, lastname, mail, id], (err, result) => {
+            if (err) {
+                return console.error(err.message)
+            }
+            res.redirect("http://localhost:3000/contacts")
+        })
+
+    } catch (err) {
+        console.error('Error in routerContacts with get method : /contacts/modify', err.message)
+    }
+})
 
 function retrieveUsername() {
     var data = fs.readFileSync('./configUser.json', 'utf8')
