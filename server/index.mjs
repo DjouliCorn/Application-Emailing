@@ -30,7 +30,7 @@ app.use(routerMessage)
 app.use(routerMail)
 app.use(routerLibelles)
 app.use(morgan('tiny'))
-app.use("/swager", swaggerUI.serve, swaggerUI.setup(docs));
+app.use("/swagger", swaggerUI.serve, swaggerUI.setup(docs));
 
 app.listen(port, host)
 console.log('\x1b[36m%s\x1b[0m', `\nListening at http://${host}:${port}`)

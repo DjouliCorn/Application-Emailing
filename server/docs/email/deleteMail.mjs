@@ -1,16 +1,16 @@
 export default {
-    get: {
-        tags: ["Tous les mails"],
-        description: "Get all mails",
-        operationId: "getAllMails",
+    post: {
+        tags: ["Supprimer"],
+        description: "Delete draft",
+        operationId: "deleteMail",
         parameters: [],
         responses: {
             200: {
-                description: "Get all mails",
+                description: "Delete draft",
                 content: {
                     "application/json": {
                         schema: {
-                            $ref: "#/components/schemas/mails",
+                            $ref: "#/components/schemas/draft",
                         },
                     },
                 },
