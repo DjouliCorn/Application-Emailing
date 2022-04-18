@@ -5,6 +5,8 @@ import routerLogin from './routesLogin.mjs'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import path from 'path'
+import swaggerUI from "swagger-ui-express";
+import docs from './docs/index.mjs'
 //import session from 'express-session'
 
 dotenv.config()
@@ -22,6 +24,7 @@ app.use(bodyParser.json())
 app.use(routerContact)
 app.use(routerLogin)
 app.use(morgan('tiny'))
+app.use("/swager", swaggerUI.serve, swaggerUI.setup(docs));
 
 app.listen(port, host)
 console.log('\x1b[36m%s\x1b[0m', `\nListening at http://${host}:${port}`)
