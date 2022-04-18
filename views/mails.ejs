@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/mail.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mails</title>
+</head>
+
+<body>
+    <%- include("header") -%>
+    <form method="POST">
+        <div class="bodyContainer">
+            <%- include("menu") -%>
+
+            <a href="/mailDraft">
+            <input type="button" class="draft" value="Mes brouillons" />
+            </a>
+
+            <a href="/mailSended">
+            <input type="button" class="send" value="Mes mails envoyés" />
+            </a>
+
+                <div class="Mail">
+                    <h1 class="titre">Liste des mails</h1>
+
+                    <ol>
+                        <% for (const mail of model) { %>
+                            <li>
+                                <p class="text">Objet :</p> <%= mail.object %>  <p class="text">Contenu :</p> <%= mail.content %>
+                            </li>
+
+                            <%}%>
+                    </ol>
+                </div>
+        </div>
+    </form>
+</body>
+
+</html>

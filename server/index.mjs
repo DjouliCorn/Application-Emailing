@@ -3,6 +3,7 @@ import morgan from 'morgan'
 import routerContact from './routesContacts.mjs'
 import routerLogin from './routesLogin.mjs'
 import routerMessage from './routesMessage.mjs'
+import routerMail from './routesMail.mjs'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import path from 'path'
@@ -23,6 +24,7 @@ app.use(bodyParser.json())
 app.use(routerContact)
 app.use(routerLogin)
 app.use(routerMessage)
+app.use(routerMail)
 app.use(morgan('tiny'))
 
 app.listen(port, host)
