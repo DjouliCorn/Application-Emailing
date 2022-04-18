@@ -7,6 +7,7 @@ const sqlContact = "SELECT * FROM contact"
 const sqlModifyContact = "SELECT * FROM contact WHERE id=$1"
 const sqlUpdateContact = "UPDATE contact SET name=$1, firstname=$2, lastname=$3, mail=$4 WHERE id=$5"
 const sqlDeleteContact = "DELETE FROM contact WHERE id=$1 "
+const sqlAddContact = "INSERT INTO contact (name, firstname, lastname, mail, idlist) VALUES ($1, $2, $3, $4, $5)"
 
 routerContact.get('/contacts', (req, res) => {
     try {
@@ -75,6 +76,16 @@ routerContact.post('/deleteContact', (req, res) => {
         console.error('Error in routerContacts with get method : /contacts/modify', err.message)
     }
 })
+
+routerContact.get('/addNewContact', (req, res) => {
+    try {
+
+    } catch (err) {
+        console.error('Error in routerContacts with get method : /contacts/modify', err.message)
+    }
+})
+
+
 
 function retrieveUsername() {
     var data = fs.readFileSync('./configUser.json', 'utf8')
