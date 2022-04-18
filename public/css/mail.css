@@ -1,0 +1,46 @@
+.Mail {
+    background-color: #EEEBD3;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.titre {
+    color: #346B74;
+    text-align: center;
+}
+
+.text {
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 10px;
+    margin-bottom: 1px;
+}
+
+.draft {
+    position: absolute;
+    color: white;
+    height: 5%;
+    top: 10%;
+    left: 10%;
+    background-color: #A98743;
+    border-radius: 10px;
+}
+
+.send {
+    position: absolute;
+    color: white;
+    height: 5%;
+    top: 10%;
+    left: 20%;
+    background-color: #A98743;
+    border-radius: 10px;
+}
+
+.returnhome {
+    border-radius: 10px;
+    background-color: #F7C548;
+    margin-top: 5px;
+}
