@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/contact.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Liste de contacts</title>
+</head>
+
+<body>
+    <%-include("header")-%>
+        <div class="bodyContainer">
+            <%- include("menu") -%>
+                <div class="bodyContact">
+                    <div>
+                        <form action="/listModifyDone" method="post">
+                            <% for (const data of model) { %>
+                                <label>Id</label>
+                                <input type="text" readonly="true" id="id" name="id" value="<%= data.id %>" />
+                                <label>Surnom</label>
+                                <input type="text" id="name" name="name" value="<%= data.name %>" />
+                                <label>Prénom</label>
+                                <input type="text" id="description" name="description" value="<%= data.description %>">
+                                <%}%>
+                                    <button type="submit" class="btn btn-primary">Modifier</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+</body>
+
+</html>

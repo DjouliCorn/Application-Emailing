@@ -71,8 +71,6 @@ routerContact.post('/deleteContact', (req, res) => {
             }
             res.redirect("http://localhost:3000/contacts")
         })
-
-
     } catch (err) {
         console.error('Error in routerContacts with get method : /contacts/modify', err.message)
     }
@@ -117,16 +115,6 @@ function retrieveUsername() {
     try {
         var dataParse = JSON.parse(data)
         return dataParse['username']
-    } catch (err) {
-        console.error(err)
-    }
-}
-
-function retrieveIdUser() {
-    var data = fs.readFileSync('./configUser.json', 'utf8')
-    try {
-        var dataParse = JSON.parse(data)
-        return dataParse['id']
     } catch (err) {
         console.error(err)
     }

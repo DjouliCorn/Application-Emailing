@@ -74,7 +74,5 @@ function retrieveUsername() {
     } catch (err) {
         console.error(err)
     }
-}
 
-export default routerLogin
-
+    export default routerLogin
