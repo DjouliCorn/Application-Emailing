@@ -44,3 +44,9 @@
     background-color: #F7C548;
     margin-top: 5px;
 }
+
+.count{
+    font-weight: bold;
+    font-size: x-large;
+    text-align: center;
+}
