@@ -43,7 +43,7 @@ routerLogin.post('/auth', (req, res) => {
 })
 
 routerLogin.get('/home', (req, res) => {
-    res.render('home', { getName: pseudo })
+    res.render('home', { getName: "elsa" })
 })
 
 routerLogin.get('/logout', function (req, res) {

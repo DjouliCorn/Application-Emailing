@@ -8,7 +8,7 @@
     border-radius: 10px;
 }
 
-.titre{
+.titre {
     text-align: left;
     margin-left: 55px;
     font-weight: bold;
@@ -16,16 +16,16 @@
     margin-bottom: 0px;
 }
 
-.input{
+.input {
     width: 400px;
 }
 
-.inputMess{
+.inputMess {
     width: 400px;
     height: 200px;
 }
 
-.brouillon{
+.brouillon {
     background-color: #8AA295;
     color: white;
     border-radius: 10px;
@@ -34,7 +34,7 @@
     margin-left: 55px;
 }
 
-.envoi{
+.envoi {
     background-color: #255957;
     color: white;
     border-radius: 10px;
@@ -42,4 +42,10 @@
     height: 50px;
     width: 150px;
     margin-left: 85px;
+}
+
+.sendating {
+    position: absolute;
+    margin-left: 700px;
+    margin-top: 100px;
 }
