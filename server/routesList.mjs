@@ -7,6 +7,8 @@ const sqlGetList = "SELECT * FROM list"
 const sqlAddList = "INSERT INTO list (name, description, creationdate, idUser) VALUES ($1, $2, DATE(NOW()), $3)"
 const getOneList = "SELECT * FROM list WHERE id=$1"
 const sqlUpdateList = "UPDATE list SET name=$1, description=$2, iduser=$3 WHERE id=$4"
+const sqlDeleteList = "DELETE FROM list WHERE id=$1"
+const sqlUpdateContact = "UPDATE contact SET idlist=null WHERE idlist=$1"
 
 routerList.get('/contactsList', (req, res) => {
     try {
@@ -70,6 +72,21 @@ routerList.post('/listModifyDone', (req, res) => {
             }
             res.redirect('http://localhost:3000/contactsList')
         })
+
+    } catch (err) {
+        console.error('Error in routerList with get method : /contactsList', err.message)
+    }
+})
+
+routerList.post('/listDelete', (req, res) => {
+    try {
+        const id = req.body.id
+        pool.query(sqlUpdateContact, [id]).then(() => pool.query(sqlDeleteList, [id], (err, result) => {
+            if (err) {
+                return console.error(err.message)
+            }
+            res.redirect('http://localhost:3000/contactsList')
+        }))
 
     } catch (err) {
         console.error('Error in routerList with get method : /contactsList', err.message)
