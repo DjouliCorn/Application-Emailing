@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/mail.css">
+    <link rel="stylesheet" href="/css/state.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Libellés</title>
+</head>
+
+<body>
+    <%- include("header") -%>
+        <form method="POST">
+            <div class="bodyContainer">
+                <%- include("menu") -%>
+
+                    <a href="/addLibelle">
+                        <input type="button" class="draft" value="Ajouter un libellé" />
+                    </a>
+
+                    <h1 class="titreLib">Liste des libellés</h1>
+
+                    <div class="Maillib">
+                        <% for (const state of model) { %>
+                            <p class="libelles">
+                                <%= state.id %>
+                                    -
+                                    <%= state.label %>
+                            </p>
+                            <br>
+
+                            <%}%>
+                                <form method="POST">
+                                    <center>
+                                        <input type="text" class="input" id="id" name="id" placeholder="Id">
+                                        <input type="submit" class="returnhome" formaction="/deleteLibelle"
+                                            value="Supprimer le libellé" />
+                                        <input type="submit" class="returnhome" formaction="/modifyLibelle"
+                                            value="Modifier le libellé" />
+                                    </center>
+                                </form>
+                    </div>
+            </div>
+        </form>
+</body>
+
+</html>

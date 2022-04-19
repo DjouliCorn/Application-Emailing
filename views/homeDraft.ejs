@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Accueil</title>
+</head>
+
+<body>
+    <%-include("header")-%>
+        <form method="POST">
+            <div class="bodyContainer">
+                <%- include("menu") -%>
+                    <div class="writeMail" style="height: 600px;">
+                        <center>
+                            <% for (const draft of model) { %>
+                                <p class="titre">Id : </p>
+                                <input type="text" readonly="true" class="input" id="id" name="id"
+                                    value="<%= draft.id %>" />
+                                <p class="titre">Destinataire</p>
+                                <input type="text" class="input" id="destinataire" name="destinataire"
+                                    value="<%= draft.idlist %>">
+                                <p class="titre">Objet</p>
+                                <input type="text" class="input" id="objet" name="objet" value="<%= draft.object %>">
+                                <p class="titre">Message</p>
+                                <textarea type="text" class="inputMess" id="message"
+                                    name="message"><%= draft.content %></textarea>
+                                <%}%>
+                        </center>
+                        <input type="submit" class="brouillon" formaction="/draftTwo" value="Ajouter au brouillon" />
+                        <input type="submit" class="envoi" formaction="/sendDraft" value="Envoyer" />
+                    </div>
+            </div>
+        </form>
+
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+import express from 'express'
+import pool from './services/config.mjs'
+
+const routerLibelles = express.Router()
+const sqlState = 'SELECT * from state'
+const sqlLabel = 'INSERT INTO state (label) VALUES ($1)'
+const sqlLibelleDelete = "DELETE FROM state WHERE id=$1"
+const sqlLibelleSelectionned = "SELECT * FROM state WHERE id=$1"
+const sqlLibelleUpdate = 'UPDATE state SET label = $2 WHERE id=$1'
+var errorIncorrectInfo = ""
+
+
+routerLibelles.get('/libelles', (req, res) => {
+    try {
+        pool.query(sqlState, [], (err, result) => {
+            if (err) {
+                return console.error(err.message)
+            }
+            req.body = result.rows
+            res.render("state", { model: result.rows, getName: "bastien" })
+        })
+    } catch (err) {
+        console.error('Error in routerLibelles with get method : /libelles', err.message)
+    }
+})
+
+routerLibelles.get('/addLibelle', (_, res) => {
+    res.render('addLibelle', { getName: "bastien" })
+})
+
+routerLibelles.post('/queryLibelle', (req, res) => {
+    const obj = Object.assign({}, req.body)
+
+    errorIncorrectInfo = ""
+    let label = obj.label
+
+    if (label) {
+        pool.query(sqlLabel, [label], async function (err, result) {
+            if (err) { throw err }
+            res.redirect('/libelles')
+            res.end
+        })
+        pool.end
+    } else {
+        res.render('addLibelle', { getName: "bastien" })
+        res.end
+    }
+})
+
+routerLibelles.post('/deleteLibelle', (req, res) => {
+    const obj = Object.assign({}, req.body)
+
+    errorIncorrectInfo = ""
+    let id = obj.id
+
+    if (id) {
+        pool.query(sqlLibelleDelete, [id], async function (err, results) {
+            if (err) { throw err }
+            res.redirect('/libelles')
+            res.end
+        })
+        pool.end
+    } else {
+        res.render('state', { getName: "bastien" })
+        res.end
+    }
+})
+
+routerLibelles.post('/modifyLibelle', (req, res) => {
+
+    const obj = Object.assign({}, req.body)
+
+    errorIncorrectInfo = ""
+    let id = obj.id
+
+    if (id) {
+        pool.query(sqlLibelleSelectionned, [id], async function (err, results) {
+            if (err) { throw err }
+            req.body = results.rows
+            res.render("modifyLib", { model: results.rows, getName: "bastien" })
+            res.end
+        })
+        pool.end
+    } else {
+        res.render('state', { getName: "bastien" })
+        res.end
+    }
+})
+
+routerLibelles.post('/queryModify', (req, res) => {
+    const obj = Object.assign({}, req.body)
+
+    errorIncorrectInfo = ""
+    let id = obj.id
+    let label = obj.label
+
+    if (id && label) {
+        pool.query(sqlLibelleUpdate, [id, label], async function (err, results) {
+            if (err) { throw err }
+            res.redirect('/modified')
+            res.end
+        })
+        pool.end
+    } else {
+        res.render('home', { getName: "bastien" })
+        res.end
+    }
+})
+
+routerLibelles.get('/modified', (_, res) => {
+    res.render('modified', { getName: "bastien" })
+})
+
+export default routerLibelles
+

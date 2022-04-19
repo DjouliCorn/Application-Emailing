@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/mail.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Brouillons</title>
+</head>
+
+<body>
+    <%- include("header") -%>
+        <div class="bodyContainer">
+            <%- include("menu") -%>
+
+                <a href="/mail">
+                    <input type="button" class="draft" value="Tous mes mails" />
+                </a>
+
+                <a href="/mailSended">
+                    <input type="button" class="send" value="Mes mails envoyés" />
+                </a>
+
+                <div class="Mail">
+                    <h1 class="titre">Liste de mes brouillons</h1>
+
+                    <ul>
+                        <% for (const mail of model) { %>
+                            <li>
+                                <p class="text">Id :</p>
+                                <%= mail.id %>
+                                    <p class="text">Objet :</p>
+                                    <%= mail.object %>
+                                        <p class="text">Contenu :</p>
+                                        <%= mail.content %>
+                            </li>
+                            <%}%>
+                    </ul>
+                    <center>
+                        <form method="POST">
+                            <input type="text" class="input" id="id" name="id" placeholder="Id">
+                            <input type="submit" class="returnhome" formaction="/deleteMail" value="Suppression" />
+                            <input type="submit" class="returnhome" formaction="/homeDraft"
+                                value="Continuer mon mail" />
+                        </form>
+                    </center>
+                </div>
+        </div>
+</body>
+
+</html>

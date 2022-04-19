@@ -1,0 +1,42 @@
+.libelles{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.titreLib{
+    position: absolute;
+    color: #346B74;
+    left:42%;
+    top: 10%;
+}
+
+.Maillib{
+    background-color: #EEEBD3;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15%;
+}
+
+.writeLibelle{
+    background-color: #EEEBD3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 500px;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.sendlibel{
+    background-color: #255957;
+    color: white;
+    border-radius: 10px;
+    margin-top: 30px;
+    height: 50px;
+    width: 150px;
+    margin-left: 170px;
+}
