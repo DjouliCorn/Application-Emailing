@@ -5,6 +5,7 @@ import routerLogin from './routesLogin.mjs'
 import routerMessage from './routesMessage.mjs'
 import routerMail from './routesMail.mjs'
 import routerLibelles from './routesLibelles.mjs'
+import routerList from './routesList.mjs'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import path from 'path'
@@ -29,6 +30,7 @@ app.use(routerLogin)
 app.use(routerMessage)
 app.use(routerMail)
 app.use(routerLibelles)
+app.use(routerList)
 app.use(morgan('tiny'))
 app.use("/swagger", swaggerUI.serve, swaggerUI.setup(docs));
 

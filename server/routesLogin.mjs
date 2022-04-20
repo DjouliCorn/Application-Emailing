@@ -1,10 +1,10 @@
 import express from 'express'
 import pool from './services/config.mjs'
+import fs from 'fs'
 
 const routerLogin = express.Router()
 const sqlUser = 'SELECT * FROM users WHERE pseudo = $1 AND password = $2'
 var errorIncorrectInfo = ""
-var pseudo = ""
 
 routerLogin.get('/', (_, res) => {
     res.render('login', {
@@ -24,7 +24,9 @@ routerLogin.post('/auth', (req, res) => {
             if (results.rows.length > 0) {
                 var jsonToString = JSON.stringify(results.rows[0])
                 var userInfo = JSON.parse(jsonToString)
-                pseudo = await userInfo['pseudo']
+                var id = await userInfo['id']
+                var pseudo = await userInfo['pseudo']
+                saveUserInfo(id, pseudo)
                 res.redirect('/home')
             } else {
                 res.render('login', {
@@ -43,7 +45,8 @@ routerLogin.post('/auth', (req, res) => {
 })
 
 routerLogin.get('/home', (req, res) => {
-    res.render('home', { getName: "elsa" })
+    var infoUser = retrieveUsername()
+    res.render('home', { getName: infoUser })
 })
 
 routerLogin.get('/logout', function (req, res) {
@@ -51,5 +54,26 @@ routerLogin.get('/logout', function (req, res) {
     res.redirect('/')
 })
 
-export default routerLogin
+function saveUserInfo(idUser, pseudoOfUser) {
+    var data = { id: idUser, username: pseudoOfUser };
+    var jsonToWrite = JSON.stringify(data)
+    fs.writeFile('./configUser.json', jsonToWrite, function (err) {
+        if (err) {
+            console.error(err)
+        } else {
+            console.log("JSON updated")
+        }
+    })
+}
 
+function retrieveUsername() {
+    var data = fs.readFileSync('./configUser.json', 'utf8')
+    try {
+        var dataParse = JSON.parse(data)
+        return dataParse['username']
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+export default routerLogin

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/contact.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Contact</title>
+</head>
+
+<body>
+    <%-include("header")-%>
+        <div class="bodyContainer">
+            <%- include("menu") -%>
+                <div class="bodyContact">
+                    <ul>
+                        <a href="http://localhost:3000/contacts">
+                            <li>Tous les contacts</li>
+                        </a>
+                        <li class="selected">Contacts par liste</li>
+                        <a href="http://localhost:3000/addNewContact">
+                            <li>Ajouter un contact</li>
+                        </a>
+                    </ul>
+                    <table>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+        </div>
+        <script>
+            var result = '<%-resultModule %>'
+            var data = JSON.parse(result)
+            const table = document.querySelector("table")
+            const tableBody = table.querySelector("tbody")
+            tableBody.innerHTML = ""
+
+            data.forEach(element => {
+                const rowElt = document.createElement("tr")
+                rowElt.classList = "listContact"
+                const arrayOfElt = []
+                arrayOfElt.push(element['name'])
+                arrayOfElt.push(element['firstname'])
+                arrayOfElt.push(element['lastname'])
+                arrayOfElt.push(element['mail'])
+
+                for (const elt of arrayOfElt) {
+                    const cellElt = document.createElement("td")
+                    cellElt.classList = "cell"
+                    cellElt.textContent = elt
+                    rowElt.appendChild(cellElt)
+                }
+                tableBody.appendChild(rowElt)
+            })
+        </script>
+</body>
+
+</html>

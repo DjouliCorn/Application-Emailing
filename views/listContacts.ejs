@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/contact.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Liste de contacts</title>
+</head>
+
+<body>
+    <%-include("header")-%>
+        <div class="bodyContainer">
+            <%- include("menu") -%>
+                <div class="bodyContact">
+                    <ul>
+                        <a href="http://localhost:3000/contacts">
+                            <li>Tous les contacts</li>
+                        </a>
+                        <li class="selected">Contacts par liste</li>
+                        <a href="http://localhost:3000/addNewContact">
+                            <li>Ajouter un contact</li>
+                        </a>
+                    </ul>
+                    <div class="modifyDelete">
+                        <form method="POST">
+                            Rentrez l'id :
+                            <input type="text" name="id" />
+                            <input type="submit" formaction="/listModify" value="Modifier" />
+                            <input type="submit" formaction="/listDelete" value="Supprimer" />
+                            <input type="submit" formaction="/getContactFromList" value="Afficher" />
+                        </form>
+                    </div>
+                    <table id="tableList">
+                        <tbody></tbody>
+                    </table>
+                    <div class="addList">
+                        Ajouter une nouvelle liste
+                        <form action="/addList" method="POST">
+                            <label>Nom</label>
+                            <input type="text" id="listName" name="listName" />
+                            <label>Description</label>
+                            <input type="text" id="listDescription" name="listDescription" />
+                            <button type="submit">Ajouter</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+        <script>
+            var result = '<%-resultModule %>'
+            var data = JSON.parse(result)
+            const tableList = document.querySelector("table")
+            const tableBodyList = tableList.querySelector("tbody")
+            tableBodyList.innerHTML = ""
+
+            data.forEach(element => {
+                const rowElt = document.createElement("tr")
+                rowElt.classList = "list"
+                const arrayOfElt = []
+                arrayOfElt.push(element['id'])
+                arrayOfElt.push(element['name'])
+                arrayOfElt.push(element['description'])
+
+                for (const elt of arrayOfElt) {
+                    const cellElt = document.createElement("td")
+                    cellElt.classList = "cellList"
+                    cellElt.textContent = elt
+                    rowElt.appendChild(cellElt)
+                }
+                const img = document.createElement("td")
+                /*img.classList = "imgList"
+                img.innerHTML = '<a onClick="getIndex()"><img src="/pen-solid 1ic-modify.png" /></a>'
+                rowElt.appendChild(img)*/
+                tableBodyList.appendChild(rowElt)
+            });
+        </script>
+</body>
+
+</html>
