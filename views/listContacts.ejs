@@ -32,6 +32,7 @@
                             <input type="text" name="id" />
                             <input type="submit" formaction="/listModify" value="Modifier" />
                             <input type="submit" formaction="/listDelete" value="Supprimer" />
+                            <input type="submit" formaction="/getContactFromList" value="Afficher" />
                         </form>
                     </div>
                     <table id="tableList">
@@ -54,7 +55,6 @@
             var data = JSON.parse(result)
             const tableList = document.querySelector("table")
             const tableBodyList = tableList.querySelector("tbody")
-            console.log(tableBodyList)
             tableBodyList.innerHTML = ""
 
             data.forEach(element => {
@@ -71,6 +71,10 @@
                     cellElt.textContent = elt
                     rowElt.appendChild(cellElt)
                 }
+                const img = document.createElement("td")
+                /*img.classList = "imgList"
+                img.innerHTML = '<a onClick="getIndex()"><img src="/pen-solid 1ic-modify.png" /></a>'
+                rowElt.appendChild(img)*/
                 tableBodyList.appendChild(rowElt)
             });
         </script>
