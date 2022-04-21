@@ -1,5 +1,6 @@
 import express from 'express'
 import pool from './services/config.mjs'
+import fs from 'fs'
 
 const routerMail = express.Router()
 const sqlMail = "SELECT * FROM message"
@@ -12,12 +13,13 @@ var errorIncorrectInfo = ""
 routerMail.get('/mail', (req, res) => {
     const obj = Object.assign({}, req.body)
     try {
+        var infoUser = retrieveUsername()
         pool.query(sqlMail, [], (err, result) => {
             if (err) {
                 return console.error(err.message)
             }
             req.body = result.rows
-            res.render("mails", { model: result.rows, getName: "bastien" })
+            res.render("mails", { model: result.rows, getName: infoUser })
         })
     } catch (err) {
         console.error('Error in routerMail with get method : /mail', err.message)
@@ -26,12 +28,13 @@ routerMail.get('/mail', (req, res) => {
 
 routerMail.get('/mailSended', (req, res) => {
     try {
+        var infoUser = retrieveUsername()
         pool.query(sqlMailSend, [], (err, result) => {
             if (err) {
                 return console.error(err.message)
             }
             req.body = result.rows
-            res.render("send", { model: result.rows, getName: "bastien" })
+            res.render("send", { model: result.rows, getName: infoUser })
         })
     } catch (err) {
         console.error('Error in routerMail with get method : /mailSended', err.message)
@@ -40,12 +43,13 @@ routerMail.get('/mailSended', (req, res) => {
 
 routerMail.get('/mailDraft', (req, res) => {
     try {
+        var infoUser = retrieveUsername()
         pool.query(sqlMailDraft, [], (err, result) => {
             if (err) {
                 return console.error(err.message)
             }
             req.body = result.rows
-            res.render("draft", { model: result.rows, getName: "bastien" })
+            res.render("draft", { model: result.rows, getName: infoUser })
         })
     } catch (err) {
         console.error('Error in routerMail with get method : /mailDraft', err.message)
@@ -60,10 +64,11 @@ routerMail.post('/homeDraft', (req, res) => {
     let id = obj.id
 
     if (id) {
+        var infoUser = retrieveUsername()
         pool.query(sqlMailSelectionned, [id], async function (err, results) {
             if (err) { throw err }
             req.body = results.rows
-            res.render("homeDraft", { model: results.rows, getName: "bastien" })
+            res.render("homeDraft", { model: results.rows, getName: infoUser })
             res.end
         })
         pool.end
@@ -91,6 +96,16 @@ routerMail.post('/deleteMail', (req, res) => {
         res.end
     }
 })
+
+function retrieveUsername() {
+    var data = fs.readFileSync('./configUser.json', 'utf8')
+    try {
+        var dataParse = JSON.parse(data)
+        return dataParse['username']
+    } catch (err) {
+        console.error(err)
+    }
+}
 
 export default routerMail
 

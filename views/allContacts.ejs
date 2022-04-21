@@ -71,8 +71,29 @@
                     cellElt.textContent = elt
                     rowElt.appendChild(cellElt)
                 }
+                /*const cellImg = document.createElement("td")
+                cellImg.innerHTML = '<a onclick="getInfoRow()"><img src="pen-solid 1ic-modify.png" /></a>'
+                rowElt.appendChild(cellImg)*/
                 tableBody.appendChild(rowElt)
             })
+
+            /*function getInfoRow() {
+                const table = document.querySelector("table")
+                const cells = document.querySelectorAll("td")
+                cells.forEach(cell => {
+                    cell.addEventListener('click', () => {
+                        var index = cell.closest('tr').rowIndex
+                        const data = table.rows[index].cells[0].innerHTML
+                        console.log(data)
+                        fetch("/contactModify", {
+                            method: "POST",
+                            body: JSON.stringify(data)
+                        }).then(res => {
+                            console.log("nickel", res)
+                        })
+                    })
+                })
+            }*/
         </script>
 </body>
 

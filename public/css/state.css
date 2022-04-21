@@ -1,26 +1,25 @@
-.libelles{
+.libelles {
     text-align: center;
     margin-top: 10px;
 }
 
-.titreLib{
+.titreLib {
     position: absolute;
     color: #346B74;
-    left:42%;
+    left: 42%;
     top: 10%;
 }
 
-.Maillib{
+.Maillib {
     background-color: #EEEBD3;
     border-radius: 10px;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 23%;
+    left: 35%;
     width: 15%;
 }
 
-.writeLibelle{
+.writeLibelle {
     background-color: #EEEBD3;
     top: 50%;
     left: 50%;
@@ -31,7 +30,7 @@
     border-radius: 10px;
 }
 
-.sendlibel{
+.sendlibel {
     background-color: #255957;
     color: white;
     border-radius: 10px;

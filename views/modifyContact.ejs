@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/modifyContact.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Contact</title>
@@ -16,21 +17,24 @@
         <div class="bodyContainer">
             <%- include("menu") -%>
                 <div class="bodyContact">
-                    <div>
+                    <div class="modifyContactBody">
+                        <h3>Modifier le contact</h3>
                         <form action="/contactModifyDone" method="post">
                             <% for (const data of model) { %>
-                                <label>Id</label>
-                                <input type="text" readonly="true" id="id" name="id" value="<%= data.id %>" />
-                                <label>Surnom</label>
-                                <input type="text" id="name" name="name" value="<%= data.name %>" />
-                                <label>Prénom</label>
-                                <input type="text" id="firstname" name="firstname" value="<%= data.firstname %>">
-                                <label>Nom</label>
-                                <input type="text" id="lastname" name="lastname" value="<%= data.lastname %>">
-                                <label>Mail</label>
-                                <input type="text" id="mail" name="mail" value="<%= data.mail %>">
+                                <div class="formBody">
+                                    <label>Id</label>
+                                    <input type="text" readonly="true" id="id" name="id" value="<%= data.id %>" />
+                                    <label>Surnom</label>
+                                    <input type="text" id="name" name="name" value="<%= data.name %>" />
+                                    <label>Prénom</label>
+                                    <input type="text" id="firstname" name="firstname" value="<%= data.firstname %>">
+                                    <label>Nom</label>
+                                    <input type="text" id="lastname" name="lastname" value="<%= data.lastname %>">
+                                    <label>Mail</label>
+                                    <input type="text" id="mail" name="mail" value="<%= data.mail %>">
+                                </div>
                                 <%}%>
-                                    <button type="submit" class="btn btn-primary">Modifier</button>
+                                    <input type="submit" class="button" value="MODIFIER" />
                         </form>
                     </div>
                 </div>

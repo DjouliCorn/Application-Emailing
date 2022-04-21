@@ -26,8 +26,17 @@
                             <li>Ajouter un contact</li>
                         </a>
                     </ul>
-                    <table>
+                    <table id="tableContact">
+                        <thead>
+                            <tr>
+                                <th id="firstTh" scope="col">Id</th>
+                                <th scope="col">Surnom</th>
+                                <th scope="col">Prénom</th>
+                                <th scope="col">Nom</th>
+                                <th id="lastTh" scope="col">Mail</th>
+                            </tr>
                         <tbody></tbody>
+                        </thead>
                     </table>
                 </div>
 
@@ -43,6 +52,7 @@
                 const rowElt = document.createElement("tr")
                 rowElt.classList = "listContact"
                 const arrayOfElt = []
+                arrayOfElt.push(element['id'])
                 arrayOfElt.push(element['name'])
                 arrayOfElt.push(element['firstname'])
                 arrayOfElt.push(element['lastname'])
