@@ -14,17 +14,16 @@
 
 <body>
     <%- include("header") -%>
-    <form method="POST">
-        <div class="bodyContainer">
+        <form method="POST">
             <%- include("menu") -%>
 
-            <a href="/mailDraft">
-            <input type="button" class="draft" value="Mes brouillons" />
-            </a>
+                <a href="/mailDraft">
+                    <input type="button" class="draft" value="Mes brouillons" />
+                </a>
 
-            <a href="/mailSended">
-            <input type="button" class="send" value="Mes mails envoyés" />
-            </a>
+                <a href="/mailSended">
+                    <input type="button" class="send" value="Mes mails envoyés" />
+                </a>
 
                 <div class="Mail">
                     <h1 class="titre">Liste des mails</h1>
@@ -32,14 +31,16 @@
                     <ol>
                         <% for (const mail of model) { %>
                             <li>
-                                <p class="text">Objet :</p> <%= mail.object %>  <p class="text">Contenu :</p> <%= mail.content %>
+                                <p class="text">Objet :</p>
+                                <%= mail.object %>
+                                    <p class="text">Contenu :</p>
+                                    <%= mail.content %>
                             </li>
 
                             <%}%>
                     </ol>
                 </div>
-        </div>
-    </form>
+        </form>
 </body>
 
 </html>

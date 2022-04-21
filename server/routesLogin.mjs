@@ -4,6 +4,7 @@ import fs from 'fs'
 
 const routerLogin = express.Router()
 const sqlUser = 'SELECT * FROM users WHERE pseudo = $1 AND password = $2'
+const sqlList = 'SELECT * FROM list'
 var errorIncorrectInfo = ""
 
 routerLogin.get('/', (_, res) => {
@@ -44,9 +45,19 @@ routerLogin.post('/auth', (req, res) => {
     }
 })
 
-routerLogin.get('/home', (req, res) => {
-    var infoUser = retrieveUsername()
-    res.render('home', { getName: infoUser })
+routerLogin.get('/home', (_, res) => {
+    try {
+        var infoUser = retrieveUsername()
+        pool.query(sqlList, (err, result) => {
+            if (err) {
+                return console.error(err.message)
+            }
+            let jsonData = JSON.stringify(result.rows)
+            res.render('home', { getName: infoUser, model: jsonData })
+        })
+    } catch (err) {
+        console.error('Error in routerLogin with get method : /home', err.message)
+    }
 })
 
 routerLogin.get('/logout', function (req, res) {

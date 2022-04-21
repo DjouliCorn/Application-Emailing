@@ -79,5 +79,9 @@ routerEndpoint.get('/lastMailSended', (req, res) => {
     }
 })
 
+routerEndpoint.get('/displayEndPoint', (_, res) => {
+    res.render('displayEndP', { getName: "bastien" })
+})
+
 export default routerEndpoint
 

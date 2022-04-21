@@ -2,9 +2,8 @@
     background-color: #EEEBD3;
     border-radius: 10px;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 15%;
+    left: 35%;
 }
 
 .titre {
@@ -17,6 +16,7 @@
     text-decoration: underline;
     margin-top: 10px;
     margin-bottom: 1px;
+    max-height: 100%;
 }
 
 .draft {
@@ -45,7 +45,7 @@
     margin-top: 5px;
 }
 
-.count{
+.count {
     font-weight: bold;
     font-size: x-large;
     text-align: center;
