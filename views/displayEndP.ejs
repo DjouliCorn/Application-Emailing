@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/endpoint.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>EndPoint</title>
+</head>
+
+<body>
+    <%-include("header")-%>
+        <div class="bodyContainer">
+            <%- include("menu") -%>
+                <div class="contain">
+                    <a href="/endUser">
+                        <button type="submit" class="button">Total d'utilisateur</button>
+                    </a>
+                    <a href="/endContact">
+                        <button type="submit" class="button">Total de contact</button>
+                    </a>
+                    <a href="/endList">
+                        <button type="submit" class="button">Total de liste</button>
+                    </a>
+                    <a href="/endMailSended">
+                        <button type="submit" class="button">Total de mail envoyé</button>
+                    </a>
+                    <a href="/lastMailSended">
+                        <button type="submit" class="button">Id du dernier mail envoyé</button>
+                    </a>
+                </div>
+        </div>
+</body>
+
+</html>

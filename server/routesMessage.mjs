@@ -10,7 +10,7 @@ var errorIncorrectInfo = ""
 
 routerMessage.post('/draft', (req, res) => {
     errorIncorrectInfo = ""
-    let idList = req.body.destinataire
+    let idList = req.body.list
     let object = req.body.objet
     let content = req.body.message
 
@@ -31,7 +31,7 @@ routerMessage.post('/send', (req, res) => {
     const obj = Object.assign({}, req.body)
 
     errorIncorrectInfo = ""
-    let idList = obj.destinataire
+    let idList = obj.list
     let object = obj.objet
     let content = obj.message
 
