@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/menu.css">
     <link rel="stylesheet" href="/css/contact.css">
+    <link rel="stylesheet" href="/css/addNewContact.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Contact</title>
@@ -26,9 +27,8 @@
                         </a>
                         <li class="selected">Ajouter un contact</li>
                     </ul>
-                    <div>
+                    <div class="addBody">
                         <form action="/sendNewContact" method="POST">
-                            Ajouter un nouveau contact
                             <label>Surnom</label>
                             <input type="text" id="name" name="name" />
                             <label>Prénom</label>
@@ -39,7 +39,7 @@
                             <input type="text" id="mail" name="mail" />
                             <label>Choisissez une liste</label>
                             <select name="list" id="list"></select>
-                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <input type="submit" class="button" value="Ajouter" />
                         </form>
                     </div>
                 </div>

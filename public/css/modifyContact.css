@@ -1,0 +1,33 @@
+.modifyContactBody {
+    position: absolute;
+    left: 45%;
+}
+
+.formBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EEEBD3;
+}
+
+h3 {
+    margin-top: 20%;
+    margin-bottom: 10%;
+}
+
+.button {
+    margin-top: 20%;
+    background-color: #255957;
+    color: white;
+    border-radius: 10px;
+    height: 50px;
+    width: 70%;
+}
+
+input {
+    text-align: center;
+}
+
+label {
+    margin-top: 5%;
+}

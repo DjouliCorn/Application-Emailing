@@ -1,0 +1,19 @@
+.addBody {
+    margin-top: 5%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+}
+
+.button {
+    margin-top: 5%;
+    background-color: #255957;
+    color: white;
+    border-radius: 10px;
+    height: 50px;
+    width: 20%;
+}
