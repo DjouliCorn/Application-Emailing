@@ -27,7 +27,7 @@ routerLibelles.get('/libelles', (req, res) => {
 })
 
 routerLibelles.get('/addLibelle', (_, res) => {
-    res.render('addLibelle', { getName: "bastien" })
+    res.render('addLibelle', { getName: infoUser })
 })
 
 routerLibelles.post('/queryLibelle', (req, res) => {

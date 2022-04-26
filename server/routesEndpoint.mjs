@@ -82,7 +82,7 @@ routerEndpoint.get('/lastMailSended', (req, res) => {
 })
 
 routerEndpoint.get('/displayEndPoint', (_, res) => {
-    res.render('displayEndP', { getName: "bastien" })
+    res.render('displayEndP', { getName: infoUser })
 })
 function retrieveUsername() {
     var data = fs.readFileSync('./configUser.json', 'utf8')
